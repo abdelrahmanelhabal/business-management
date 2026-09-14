@@ -1,0 +1,88 @@
+@charset "ISO-8859-1";
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+
+:root {
+    --ink: #17352b;
+    --muted: #6c7b72;
+    --line: #dce5dc;
+    --cream: #f8f6ef;
+    --paper: #fffefa;
+    --accent: #d98d3a;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+}
+
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(248, 246, 239, .94);
+    border-bottom: 1px solid var(--line);
+    backdrop-filter: blur(14px);
+}
+
+.nav-inner {
+    width: min(1180px, calc(100% - 48px));
+    min-height: 78px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.brand, .nav-links a, .nav-action { color: var(--ink); text-decoration: none; }
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    min-width: 190px;
+}
+
+.brand-mark {
+    width: 37px;
+    height: 37px;
+    display: grid;
+    place-items: center;
+    color: var(--paper);
+    background: var(--ink);
+    border-radius: 50%;
+    transform: rotate(-12deg);
+}
+
+.brand strong, .brand small { display: block; }
+.brand strong { font: 700 21px/1 'Playfair Display', serif; letter-spacing: .2px; }
+.brand small { margin-top: 4px; color: var(--muted); font-size: 9px; letter-spacing: 1.6px; text-transform: uppercase; }
+
+.nav-links { display: flex; align-items: center; gap: 30px; }
+.nav-links a { color: var(--muted); font-size: 13px; font-weight: 600; }
+.nav-links a:hover { color: var(--ink); }
+.nav-links i { margin-left: 4px; font-size: 10px; }
+
+.nav-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 16px;
+    color: var(--paper);
+    background: var(--ink);
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: 700;
+}
+.nav-action:hover { background: #285342; }
+
+@media (max-width: 720px) {
+    .nav-inner { width: min(100% - 28px, 560px); min-height: 70px; gap: 14px; }
+    .nav-links { display: none; }
+    .brand { min-width: 0; }
+    .nav-action { padding: 10px 12px; }
+}

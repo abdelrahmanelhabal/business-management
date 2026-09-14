@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Admin : Add</title>
+	<link rel="stylesheet" href="" th:href="@{/css/Add_Admin.css}" />
+	<link rel="stylesheet" th:href="@{/css/Form.css}" />
+</head>
+
+<body>
+	<a href="/admin/services">Back to workspace</a>
+	<div class="addAdmin">
+		<p class="form-kicker">TEAM / PRIVILEGED ACCESS</p><h3>Create admin account</h3>
+		<p class="form-intro">Create trusted workspace access with a unique email and password.</p>
+		<form action="" th:action="@{/addingAdmin}" method="post">
+			<label for="admin-name">Admin name</label>
+			<input id="admin-name" type="text" name="adminName" placeholder="Enter name..." class="adminName" minlength="2" required>
+			<br />
+
+			<label for="admin-email">Admin email</label>
+			<input id="admin-email" type="email" name="adminEmail" placeholder="Enter email..." class="adminEmail" required><br />
+
+
+			<label for="admin-number">Phone number</label>
+			<input id="admin-number" type="tel" name="adminNumber" placeholder="Enter 10 digit mobile number..." class="adminNumber"
+				pattern="[0-9]{10}" required /><br />
+
+
+			<label for="admin-password">Password</label>
+			<input id="admin-password" type="password" name="adminPassword" placeholder="Choose a password..." minlength="4" required /><br />
+			<button type="submit">Create admin</button>
+		</form>
+	</div>
+</body>
+
+</html>

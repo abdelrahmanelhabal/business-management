@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.com">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>TEA : HOME</title>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+	<link rel="stylesheet" th:href="@{/css/Navigation.css}" />
+	<link rel="stylesheet" th:href="@{/css/Home.css}" />
+</head>
+
+<body>
+	<nav th:replace="~{Navigation::navbar()}"></nav>
+	<main class="home-shell">
+		<section class="hero">
+			<div class="hero-copy">
+				<p class="eyebrow"><span></span> Small-batch tea, thoughtfully sourced</p>
+				<h1>A calmer ritual<br><em>starts here.</em></h1>
+				<p class="hero-intro">Discover bright, aromatic blends made for slow mornings, focused afternoons, and the space between.</p>
+				<div class="hero-actions">
+					<a class="primary-button" href="/products">Explore the collection <i class="fa-solid fa-arrow-right"></i></a>
+					<a class="text-link" href="/about">Our approach <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+				</div>
+				<div class="hero-note"><i class="fa-solid fa-seedling"></i><span><strong>Grown with intention</strong><small>From leaf to cup, quality comes first.</small></span></div>
+			</div>
+			<div class="hero-media">
+				<div class="media-stamp">EST.<br><strong>2019</strong></div>
+				<video src="/Videos/teaTree.mp4" loop autoplay muted playsinline></video>
+				<div class="media-caption"><span>01</span> The Pavan edit <i class="fa-solid fa-arrow-right"></i></div>
+			</div>
+		</section>
+		<section class="home-strip">
+			<div><strong>01</strong><span>Carefully sourced<br>ingredients</span></div>
+			<div><strong>02</strong><span>Blended for<br>everyday rituals</span></div>
+			<div><strong>03</strong><span>Delivered with<br>quiet confidence</span></div>
+		</section>
+	</main>
+</body>
+
+</html>

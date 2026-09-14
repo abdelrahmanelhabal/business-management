@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Pavan Tea | Something went wrong</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+	<link rel="stylesheet" th:href="@{/css/Navigation.css}">
+	<style>body{margin:0;background:#f8f6ef;color:#17352b;font-family:'DM Sans',sans-serif}.mainContainer{min-height:calc(100vh - 78px);display:grid;place-items:center}.container{width:min(560px,calc(100% - 28px));padding:46px 30px;text-align:center;border:1px solid #dce5dc;background:#fffefa}.image img{width:90px;height:90px;object-fit:cover;border-radius:50%;opacity:.75}.container h1{margin:22px 0 10px;color:#bc7135;font:600 36px 'Playfair Display',serif}.container h3{font-size:15px}.container small{color:#6c7b72}.container small[style]{display:block;margin-top:20px;color:#b24b43!important;font-size:11px;line-height:1.7}.container a{display:inline-block;margin:25px 6px 0;padding:11px 15px;color:#fffefa;background:#17352b;text-decoration:none;font-size:11px;font-weight:700}.container a:last-child{background:#d98d3a}</style>
+</head>
+
+<body>
+	<center>
+		<div class="mainContainer">
+			<div class="image">
+				<img src="/Images/repairImage.jpg" alt="ErrorLogo" />
+			</div>
+			<div class="container">
+				<h1>Ooops...Sorry..!!!</h1>
+				<h3>Something went Wrong....!</h3>
+				<small>Exception has Occured....!!!</small><br>
+				<small style="color: red;">1. May be you are trying to add null data which is not valid. <br /> OR <br />2 . Email is already registered..</small>
+				<br />
+				<a href="/admin/services">Back</a>
+				<a href="http://www.google.com" target="_blank">Help</a>
+			</div>
+		</div>
+	</center>
+</body>
+
+</html>

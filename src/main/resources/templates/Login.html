@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Pavan Tea | Sign in</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+	<link rel="stylesheet" href="" th:href="@{/css/Navigation.css}" />
+	<link rel="stylesheet" href="" th:href="@{/css/Login.css}" />
+</head>
+
+<body>
+	<nav th:replace="~{Navigation::navbar()}">
+	</nav>
+	<main class="login-shell">
+		<div class="login-aside"><p class="eyebrow"><span></span> Welcome back</p><h1>Good tea.<br><em>Good company.</em></h1><p>Access your collection, manage your account, and keep your daily ritual close.</p><a href="/home" class="text-link">Return home <i class="fa-solid fa-arrow-left"></i></a></div>
+		<div class="LoginContainer">
+		<div class="login-panel admin">
+			<div class="content">
+				<p class="panel-kicker">TEAM ACCESS</p><h2>For <span>Admins</span></h2><p class="panel-copy">Manage your catalogue and customers.</p>
+				<small class="registration-message" th:text="${registrationMessage}"></small>
+
+				<form action="" th:action="@{/adminLogin}" method="post">
+					<label>Email address<input type="email" name="email" placeholder="you@company.com" class="email"></label>
+
+					<label>Password<input type="password" name="password" placeholder="Enter your password" class="password"></label>
+					<small class="form-error" th:text="${error}"></small>
+					<button type="submit" class="loginButton">Continue <i class="fa-solid fa-arrow-right"></i></button>
+				</form>
+			</div>
+		</div>
+		<div class="login-panel user">
+			<div class="content">
+				<p class="panel-kicker">CUSTOMER ACCESS</p><h2>For <span>Members</span></h2><p class="panel-copy">Find your favourites and order with ease.</p>
+				<form action="" th:action="@{/userlogin}" method="post" class="form">
+					<label>Email address<input type="email" name="userEmail" placeholder="you@example.com"></label>
+					<!--		th:classappend="${#fields.hasErrors('userEmail')?'emailError':''}">-->
+
+					<!--<div style="color: red;font-size: 16px;" class="emailError" th:each="e :${#fields.errors('userEmail')}" th:text="${e}">
+					</div>--> <br />
+
+
+					<label>Password<input type="password" name="userPassword" placeholder="Enter your password" required minlength="4" class="userPassword"></label>
+					<!--th:classappend="${#fields.hasErrors('userPassword')?'passwordError':'userPassword'}">-->
+					<!--<div style="color: red;font-size: 16px;" class="passwordError" th:each="e :${#fields.errors('userPassword')}" th:text="${e}">
+					</div>-->
+										<small class="form-error" th:text="${error2}"></small>
+										<button type="submit" class="loginButton">Continue <i class="fa-solid fa-arrow-right"></i></button>
+
+					<p>Need an account? <a href="/register">Register as a member</a></p>
+				</form>
+			</div></div>
+		</main>
+	</div>
+</body>
+
+</html>

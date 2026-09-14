@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.com">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Pavan Tea | Add product</title>
+	<link rel="stylesheet" href="" th:href="@{/css/Add_Product.css}" />
+	<link rel="stylesheet" th:href="@{/css/Form.css}" />
+</head>
+
+<body>
+	<a href="/admin/services">Back to workspace</a>
+	<div class="addProducts">
+		<p class="form-kicker">CATALOGUE / NEW ITEM</p><h3>Create product</h3>
+		<p class="form-intro">Add a blend to the collection. It will be available to members immediately.</p>
+		<form action="" th:action="@{/addingProduct}" method="post">
+			<label for="product-name">Product name</label>
+			<input id="product-name" type="text" name="pname" placeholder="e.g. Classic Green Tea" required />
+			<label for="product-price">Price</label>
+			<input id="product-price" type="number" name="pprice" min="0" step="0.01" placeholder="0.00" required />
+			<label for="product-description">Description</label>
+			<textarea id="product-description" name="pdescription" placeholder="Describe the blend..."></textarea>
+
+			<button type="submit">Create product</button>
+
+		</form>
+	</div>
+</body>
+
+</html>

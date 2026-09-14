@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.com">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Pavan Tea | Member workspace</title>
+	<link rel="stylesheet" th:href="@{/css/Navigation.css}" />
+	<link rel="stylesheet" th:href="@{/css/BuyProduct.css}" />
+</head>
+
+<body>
+	<nav th:replace="~{Navigation::navbar()}"></nav>
+	<main class="purchase-shell"><header class="purchase-heading"><div><p class="eyebrow"><span></span> Member area</p><h1>Welcome back, <em th:text="${name}"></em></h1><p class="purchase-intro">Find something good for your next quiet moment.</p></div><div class="purchase-actions"><a href="/products"><i class="fa-solid fa-store"></i> Browse collection</a><a href="/login" class="purchase-back"><i class="fa-solid fa-arrow-right-from-bracket"></i> Sign out</a></div></header>
+	
+		<form action="" th:action="@{/product/search}" method="post" class="searchInput">
+			<div class="search-label"><span class="search-icon"><i class="fa-solid fa-magnifying-glass"></i></span><span><strong>Find your next blend</strong><small>Search our collection by product name</small></span></div><div class="search-control"><input type="text" name="productName" required placeholder="e.g. Classic Green Tea"><button type="submit">Search <i class="fa-solid fa-arrow-right"></i></button></div>
+			<small class="purchase-error" th:text="${message}"></small>
+		</form>
+		
+		<div th:if="${product!=null}" class="details">
+			<form action="" th:action="@{/product/order}" th:object="${product}" method="post">
+				<div class="selected-heading"><div><p class="card-kicker">SELECTED BLEND</p><h2 th:text="${product.pname}"></h2></div><span class="selected-mark"><i class="fa-solid fa-leaf"></i> In stock</span></div><div class="order-fields"><label>Price<input type="text" name="oPrice" th:value="${product.pprice}" readonly /></label><label>Quantity<input type="number" placeholder="Minimum: 1" min="1" name="oQuantity" required /></label></div><input type="hidden" name="oName" th:value="${product.pname}" /><button class="order-button" type="submit">Place order <i class="fa-solid fa-arrow-right"></i></button>
+			</form>
+		</div>
+		
+		<div th:if="${orders!=null}" class="details">
+			<div class="history-heading"><div><p class="card-kicker">ORDER HISTORY</p><h2>Your orders</h2></div><span class="history-count" th:text="${#lists.size(orders)} + ' orders'"></span></div>
+			<table >
+				<tr>
+	
+					<th>Product_Name</th>
+					<th>Product_Price</th>
+					<th>Product_Quantity</th>
+					<th>Total_Ammount</th>
+					<th>Date</th>
+				</tr>
+				<tr th:each="order :${orders}">
+					<td th:text="${order.oName}"></td>
+					<td th:text="'₹ '+${order.oPrice}"></td>
+					<td th:text="${order.oQuantity}"></td>
+					<td class="total-cell" th:text="'₹ '+${order.totalAmmout}"></td>
+					<td th:text="${order.orderDate}"></td>
+
+				</tr>
+			</table>
+		</div>
+	</main>
+</body>
+
+</html>

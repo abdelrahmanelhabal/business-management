@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+
+:root { --ink: #17352b; --muted: #6c7b72; --line: #dce5dc; --cream: #f8f6ef; --paper: #fffefa; --accent: #d98d3a; }
+
+body { min-height: 100vh; margin: 0; background: var(--cream, #f8f6ef); color: var(--ink, #17352b); font-family: 'DM Sans', sans-serif; }
+body > a:first-child { display: inline-flex; align-items: center; gap: 8px; margin: 24px max(24px, calc((100% - 760px) / 2)); color: var(--muted, #6c7b72); text-decoration: none; font-size: 11px; font-weight: 700; }
+body > a:first-child::before { content: '\2190'; color: #d98d3a; font-size: 16px; }
+.addAdmin, .addProducts, .addUser, .updateAdmin, .updateProduct, .updateUser { width: min(620px, calc(100% - 48px)); margin: 35px auto 70px; padding: 38px 44px; border: 1px solid var(--line, #dce5dc); background: var(--paper, #fffefa); box-shadow: 0 18px 50px rgba(23,53,43,.07); }
+.addAdmin h3, .addProducts h3, .addUser h3, .updateAdmin h3, .updateProduct h3, .updateUser h3 { margin: 0 0 28px; color: var(--ink) !important; font: 600 30px 'Playfair Display', serif; }
+.form-kicker { margin: 0 0 9px; color: var(--accent); font-size: 9px; font-weight: 700; letter-spacing: 1.5px; }
+.form-intro { max-width: 430px; margin: -12px 0 26px; color: var(--muted); font-size: 12px; line-height: 1.6; }
+.addAdmin form, .addProducts form, .addUser form, .updateAdmin form, .updateProduct form, .updateUser form { display: grid; gap: 8px; }
+.addAdmin form, .addProducts form, .addUser form, .updateAdmin form, .updateProduct form, .updateUser form { color: var(--muted); font-size: 11px; font-weight: 700; }
+.addAdmin input, .addProducts input, .addProducts textarea, .addUser input, .updateAdmin input, .updateProduct input, .updateProduct textarea, .updateUser input { width: 100%; margin: 2px 0 12px; padding: 12px 13px; box-sizing: border-box; color: var(--ink); border: 1px solid #cbd8ce; outline: 0; background: var(--cream); font: 13px 'DM Sans', sans-serif; }
+.addAdmin input:focus, .addProducts input:focus, .addProducts textarea:focus, .addUser input:focus, .updateAdmin input:focus, .updateProduct input:focus, .updateProduct textarea:focus, .updateUser input:focus { border-color: #d98d3a; }
+.addProducts textarea, .updateProduct textarea { min-height: 100px; resize: vertical; }
+.addAdmin button, .addProducts button, .addUser button, .updateAdmin button, .updateProduct button, .updateUser button { width: max-content; margin-top: 12px; padding: 13px 18px; color: var(--paper); border: 0; background: var(--ink); cursor: pointer; font: 700 11px 'DM Sans', sans-serif; }
+.addAdmin button:hover, .addProducts button:hover, .addUser button:hover, .updateAdmin button:hover, .updateProduct button:hover, .updateUser button:hover { background: #285342; }
+@media (max-width: 560px) { body > a:first-child { margin: 20px 14px; }.addAdmin, .addProducts, .addUser, .updateAdmin, .updateProduct, .updateUser { width: min(100% - 28px, 560px); margin-top: 15px; padding: 28px 22px; }.addAdmin h3, .addProducts h3, .addUser h3, .updateAdmin h3, .updateProduct h3, .updateUser h3 { font-size: 25px; } }

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Pavan Tea | Collection</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+	<link rel="stylesheet" href="" th:href="@{/css/Navigation.css}" />
+	<link rel="stylesheet" th:href="@{/css/Products.css}" />
+	
+</head>
+
+<body>
+	<nav th:replace="~{Navigation::navbar()}"></nav>	
+	<main class="collection-shell">
+		<header class="page-heading">
+			<div><p class="eyebrow"><span></span> The collection</p><h1>Find your<br><em>daily blend.</em></h1></div>
+			<p>Thoughtful leaves, bright botanicals, and comforting classics for every kind of pause.</p>
+		</header>
+		<section class="product-grid">
+			<article class="product-card" th:each="s: ${products}">
+				<div class="product-image"><img src="/Images/final3.jpg" alt="Tea product" /><span>Small batch</span></div>
+				<div class="product-info"><p class="product-type">PAVAN TEA / BLEND</p><h2 th:text="${s.pname}"></h2><div class="product-bottom"><strong th:text="'₹ '+${s.pprice}"></strong><a href="/login" class="buy-button">Buy now <i class="fa-solid fa-arrow-right"></i></a></div></div>
+			</article>
+		</section>
+		<div class="collection-note"><i class="fa-solid fa-circle-info"></i> Sign in as a user to place an order.</div>
+	</main>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pavan Tea | Register</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" th:href="@{/css/Navigation.css}">
+    <link rel="stylesheet" th:href="@{/css/Registration.css}">
+</head>
+<body>
+    <nav th:replace="~{Navigation::navbar()}"></nav>
+    <main class="registration-shell">
+        <header class="registration-heading">
+            <p class="eyebrow"><span></span> Join the ritual</p>
+            <h1>Create your<br><em>Pavan account.</em></h1>
+            <p>Choose the access you need. Members can order blends, while admins can manage the business workspace.</p>
+        </header>
+        <section class="registration-grid">
+            <article class="registration-card member-card">
+                <div class="card-icon"><i class="fa-solid fa-user"></i></div>
+                <p class="card-kicker">CUSTOMER ACCOUNT</p>
+                <h2>Register as a member</h2>
+                <p class="card-copy">Create an account to browse, order, and keep track of your tea collection.</p>
+                <form th:action="@{/register/user}" method="post">
+                    <label>Full name<input type="text" name="uname" placeholder="Your name" minlength="2" required></label>
+                    <label>Email address<input type="email" name="uemail" placeholder="you@example.com" required></label>
+                    <label>Phone number<input type="tel" name="unumber" placeholder="10 digit number" pattern="[0-9]{10}" required></label>
+                    <label>Password<input type="password" name="upassword" placeholder="At least 4 characters" minlength="4" required></label>
+                    <label>Confirm password<input type="password" name="passwordConfirm" placeholder="Repeat your password" minlength="4" required></label>
+                    <small class="form-error" th:text="${userError}"></small>
+                    <button type="submit">Create member account <i class="fa-solid fa-arrow-right"></i></button>
+                </form>
+            </article>
+            <article class="registration-card admin-card-register">
+                <div class="card-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <p class="card-kicker">PRIVILEGED ACCOUNT</p>
+                <h2>Register as an admin</h2>
+                <p class="card-copy">Admin accounts can manage products, users, admins, and orders. Use this only for trusted staff.</p>
+                <form th:action="@{/register/admin}" method="post">
+                    <label>Admin name<input type="text" name="adminName" placeholder="Your name" minlength="2" required></label>
+                    <label>Work email<input type="email" name="adminEmail" placeholder="you@company.com" required></label>
+                    <label>Phone number<input type="tel" name="adminNumber" placeholder="10 digit number" pattern="[0-9]{10}" required></label>
+                    <label>Password<input type="password" name="adminPassword" placeholder="At least 4 characters" minlength="4" required></label>
+                    <label>Confirm password<input type="password" name="passwordConfirm" placeholder="Repeat your password" minlength="4" required></label>
+                    <small class="form-error" th:text="${adminError}"></small>
+                    <button type="submit">Create admin account <i class="fa-solid fa-arrow-right"></i></button>
+                </form>
+            </article>
+        </section>
+        <p class="registration-footer">Already have an account? <a href="/login">Sign in here</a></p>
+    </main>
+</body>
+</html>

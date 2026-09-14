@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en" xmnls:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>Pavan Tea | Order complete</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+	<link rel="stylesheet" th:href="@{/css/Navigation.css}">
+</head>
+<body>
+	<main style="min-height:calc(100vh - 78px);display:grid;place-items:center;background:#f8f6ef;font-family:'DM Sans',sans-serif;color:#17352b;">
+		<section style="width:min(560px,calc(100% - 28px));padding:55px 30px;text-align:center;border:1px solid #dce5dc;background:#fffefa;">
+			<i class="fa-solid fa-circle-check" style="color:#d98d3a;font-size:38px;"></i><p style="margin:24px 0 10px;color:#a07143;font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;">Order confirmed</p>
+			<h1 style="margin:0;font:600 38px 'Playfair Display',serif;">A beautiful choice.</h1><p style="color:#6c7b72;font-size:13px;line-height:1.7;">Your tea is on its way. Your purchased amount is <strong th:text="'₹ '+${amount}+'/-'"></strong>.</p><a href="/product/back" style="display:inline-block;margin-top:18px;padding:12px 16px;color:#fffefa;background:#17352b;text-decoration:none;font-size:11px;font-weight:700;">Back to collection <i class="fa-solid fa-arrow-right"></i></a>
+		</section>
+	</main>
+
+</body>
+
+</html>
