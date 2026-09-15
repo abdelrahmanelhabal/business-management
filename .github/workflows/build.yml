@@ -3,8 +3,12 @@ name: Build & Push Docker Image
 on:
   push:
     branches:
-      - main
-
+      - main  
+    paths:
+      - 'src/**'
+      - 'pom.xml'
+      - 'Dockerfile'
+    
 permissions:
   contents: read
 
