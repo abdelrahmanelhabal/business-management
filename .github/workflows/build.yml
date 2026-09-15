@@ -1,0 +1,74 @@
+name: Build & Push Docker Image
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  actions: write
+
+concurrency:
+  group: docker-release
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Calculate version
+        run: |
+          CURRENT_VERSION="${{ vars.APP_VERSION }}"
+          if [ -z "$CURRENT_VERSION" ]; then
+            CURRENT_VERSION="v0.0.0"
+          fi
+
+          echo "Current version: $CURRENT_VERSION"
+
+          VERSION_NUMBER=${CURRENT_VERSION#v}
+          IFS='.' read -r MAJOR MINOR PATCH <<< "$VERSION_NUMBER"
+
+          if [ "$PATCH" -lt 10 ]; then
+            PATCH=$((PATCH + 1))
+          elif [ "$MINOR" -lt 9 ]; then
+            MINOR=$((MINOR + 1))
+            PATCH=0
+          else
+            MAJOR=$((MAJOR + 1))
+            MINOR=0
+            PATCH=0
+          fi
+
+          NEW_VERSION="v${MAJOR}.${MINOR}.${PATCH}"
+          echo "New version: $NEW_VERSION"
+          echo "VERSION=$NEW_VERSION" >> "$GITHUB_ENV"
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build Docker image
+        run: |
+          docker build \
+            -t ${{ secrets.DOCKERHUB_USERNAME }}/business-management-system:${VERSION} \
+            -t ${{ secrets.DOCKERHUB_USERNAME }}/business-management-system:latest \
+            .
+
+      - name: Push Docker images
+        run: |
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/business-management-system:${VERSION}
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/business-management-system:latest
+
+      - name: Update APP_VERSION
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh variable set APP_VERSION --body "${VERSION}"
+          echo "APP_VERSION updated to ${VERSION}"
