@@ -7,7 +7,6 @@ on:
 
 permissions:
   contents: read
-  actions: write
 
 concurrency:
   group: docker-release
@@ -68,7 +67,7 @@ jobs:
 
       - name: Update APP_VERSION
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_PAT }}
         run: |
           gh variable set APP_VERSION --body "${VERSION}"
           echo "APP_VERSION updated to ${VERSION}"
